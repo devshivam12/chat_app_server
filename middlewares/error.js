@@ -1,4 +1,4 @@
-import { envMode } from "../app.js";
+
 
 const errorMiddleware = (err, req, res, next) => {
 
@@ -20,10 +20,6 @@ const errorMiddleware = (err, req, res, next) => {
     const response = {
         success : false,
         message : err.message,
-    }
-
-    if(envMode === "DEVELOPMENT"){
-        response.error = err
     }
 
     return res.status(err.statusCode).json(response)

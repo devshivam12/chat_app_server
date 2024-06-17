@@ -34,7 +34,6 @@ dotenv.config({
 
 const mongoURI = process.env.MONGO_URI;
 const port = process.env.PORT || 3000;
-const envMode = process.env.NODE_ENV.trim() || "PRODUCTION";
 const adminSecretKey = process.env.ADMIN_SECRET_KEY || "Hello";
 const userSocketIDs = new Map()
 const onlineUsers = new Set()
@@ -155,8 +154,8 @@ io.on("connection", (socket) => {
 app.use(errorMiddleware)
 
 server.listen(port, () => {
-    console.log(`server is started ${port} in ${envMode} Mode`)
+    console.log(`server is started ${port}`)
 })
 
-export { adminSecretKey, envMode, userSocketIDs };
+export { adminSecretKey, userSocketIDs };
 
